@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>cardetector</name>
+    </assembly>
+    <members>
+        <member name="T:cardetector.DayTimeDetect">
+            <summary>
+            The DayTimeDetect class provides a CLS compliant, MWArray interface to the MATLAB
+            functions contained in the files:
+            <newpara></newpara>
+            C:\Users\Lenovo\Desktop\课业\软件著作\级联模型\cardetector.m
+            </summary>
+            <remarks>
+            @Version 0.0
+            </remarks>
+        </member>
+        <member name="M:cardetector.DayTimeDetect.#cctor">
+            <summary internal= "true">
+            The static constructor instantiates and initializes the MATLAB Runtime instance.
+            </summary>
+        </member>
+        <member name="M:cardetector.DayTimeDetect.#ctor">
+            <summary>
+            Constructs a new instance of the DayTimeDetect class.
+            </summary>
+        </member>
+        <member name="M:cardetector.DayTimeDetect.Finalize">
+            <summary internal= "true">
+            Class destructor called by the CLR garbage collector.
+            </summary>
+        </member>
+        <member name="M:cardetector.DayTimeDetect.Dispose">
+            <summary>
+            Frees the native resources associated with this object
+            </summary>
+        </member>
+        <member name="M:cardetector.DayTimeDetect.Dispose(System.Boolean)">
+            <summary internal= "true">
+            Internal dispose function
+            </summary>
+        </member>
+        <member name="M:cardetector.DayTimeDetect.cardetector">
+             <summary>
+             Provides a single output, 0-input MWArrayinterface to the cardetector MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             position=[10,200,600,100];
+             </remarks>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:cardetector.DayTimeDetect.cardetector(MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides a single output, 1-input MWArrayinterface to the cardetector MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             position=[10,200,600,100];
+             </remarks>
+             <param name="fileName">Input argument #1</param>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:cardetector.DayTimeDetect.cardetector(MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides a single output, 2-input MWArrayinterface to the cardetector MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             position=[10,200,600,100];
+             </remarks>
+             <param name="fileName">Input argument #1</param>
+             <param name="modelName">Input argument #2</param>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:cardetector.DayTimeDetect.cardetector(MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides a single output, 3-input MWArrayinterface to the cardetector MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             position=[10,200,600,100];
+             </remarks>
+             <param name="fileName">Input argument #1</param>
+             <param name="modelName">Input argument #2</param>
+             <param name="position">Input argument #3</param>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:cardetector.DayTimeDetect.cardetector(System.Int32)">
+             <summary>
+             Provides the standard 0-input MWArray interface to the cardetector MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             position=[10,200,600,100];
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:cardetector.DayTimeDetect.cardetector(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides the standard 1-input MWArray interface to the cardetector MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             position=[10,200,600,100];
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="fileName">Input argument #1</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:cardetector.DayTimeDetect.cardetector(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides the standard 2-input MWArray interface to the cardetector MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             position=[10,200,600,100];
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="fileName">Input argument #1</param>
+             <param name="modelName">Input argument #2</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:cardetector.DayTimeDetect.cardetector(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides the standard 3-input MWArray interface to the cardetector MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             position=[10,200,600,100];
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="fileName">Input argument #1</param>
+             <param name="modelName">Input argument #2</param>
+             <param name="position">Input argument #3</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:cardetector.DayTimeDetect.cardetector(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray[]@,MathWorks.MATLAB.NET.Arrays.MWArray[])">
+             <summary>
+             Provides an interface for the cardetector function in which the input and output
+             arguments are specified as an array of MWArrays.
+             </summary>
+             <remarks>
+             This method will allocate and return by reference the output argument
+             array.<newpara></newpara>
+             M-Documentation:
+             position=[10,200,600,100];
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return</param>
+             <param name= "argsOut">Array of MWArray output arguments</param>
+             <param name= "argsIn">Array of MWArray input arguments</param>
+            
+        </member>
+        <member name="M:cardetector.DayTimeDetect.WaitForFiguresToDie">
+             <summary>
+             This method will cause a MATLAB figure window to behave as a modal dialog box.
+             The method will not return until all the figure windows associated with this
+             component have been closed.
+             </summary>
+             <remarks>
+             An application should only call this method when required to keep the
+             MATLAB figure window from disappearing.  Other techniques, such as calling
+             Console.ReadLine() from the application should be considered where
+             possible.</remarks>
+            
+        </member>
+    </members>
+</doc>

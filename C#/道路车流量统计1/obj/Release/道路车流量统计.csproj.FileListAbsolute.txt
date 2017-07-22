@@ -1,0 +1,15 @@
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\bin\Release\道路车流量统计.exe.config
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\obj\Release\Interop.WMPLib.dll
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\obj\Release\AxInterop.WMPLib.dll
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\obj\Release\道路车流量统计.csproj.ResolveComReference.cache
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\bin\Release\道路车流量统计.exe
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\bin\Release\道路车流量统计.pdb
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\bin\Release\SizeOfVideo.dll
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\bin\Release\Interop.WMPLib.dll
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\bin\Release\AxInterop.WMPLib.dll
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\obj\Release\道路车流量统计.欢迎.resources
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\obj\Release\道路车流量统计.NightTimeMain.resources
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\obj\Release\道路车流量统计.Properties.Resources.resources
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\obj\Release\道路车流量统计.csproj.GenerateResource.Cache
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\obj\Release\道路车流量统计.exe
+C:\Users\Lenovo\documents\visual studio 2012\Projects\Matlab\道路车流量统计\obj\Release\道路车流量统计.pdb
