@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HeadlightTracking</name>
+    </assembly>
+    <members>
+        <member name="T:HeadlightTracking.HeadLight">
+            <summary>
+            The HeadLight class provides a CLS compliant, MWArray interface to the MATLAB
+            functions contained in the files:
+            <newpara></newpara>
+            C:\Users\Lenovo\Desktop\课业\软件著作\code\DaytimeTracking\HeadlightTracking.m
+            </summary>
+            <remarks>
+            @Version 0.0
+            </remarks>
+        </member>
+        <member name="M:HeadlightTracking.HeadLight.#cctor">
+            <summary internal= "true">
+            The static constructor instantiates and initializes the MATLAB Runtime instance.
+            </summary>
+        </member>
+        <member name="M:HeadlightTracking.HeadLight.#ctor">
+            <summary>
+            Constructs a new instance of the HeadLight class.
+            </summary>
+        </member>
+        <member name="M:HeadlightTracking.HeadLight.Finalize">
+            <summary internal= "true">
+            Class destructor called by the CLR garbage collector.
+            </summary>
+        </member>
+        <member name="M:HeadlightTracking.HeadLight.Dispose">
+            <summary>
+            Frees the native resources associated with this object
+            </summary>
+        </member>
+        <member name="M:HeadlightTracking.HeadLight.Dispose(System.Boolean)">
+            <summary internal= "true">
+            Internal dispose function
+            </summary>
+        </member>
+        <member name="M:HeadlightTracking.HeadLight.HeadlightTracking">
+             <summary>
+             Provides a single output, 0-input MWArrayinterface to the HeadlightTracking
+             MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             imshow(videoFrame);
+             axis off
+             videoFrame = insertObjectAnnotation(videoFrame, 'rectangle',bboxes,0);
+             videoFrame=insertText(videoFrame,[50,50],nextId-1,'FontSize',50,'BoxColor','blue')
+             ; 
+             step(videoPlayer,videoFrame);
+             imshow(videoFrame);
+             </remarks>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:HeadlightTracking.HeadLight.HeadlightTracking(MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides a single output, 1-input MWArrayinterface to the HeadlightTracking
+             MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             imshow(videoFrame);
+             axis off
+             videoFrame = insertObjectAnnotation(videoFrame, 'rectangle',bboxes,0);
+             videoFrame=insertText(videoFrame,[50,50],nextId-1,'FontSize',50,'BoxColor','blue')
+             ; 
+             step(videoPlayer,videoFrame);
+             imshow(videoFrame);
+             </remarks>
+             <param name="fileName">Input argument #1</param>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:HeadlightTracking.HeadLight.HeadlightTracking(MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides a single output, 2-input MWArrayinterface to the HeadlightTracking
+             MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             imshow(videoFrame);
+             axis off
+             videoFrame = insertObjectAnnotation(videoFrame, 'rectangle',bboxes,0);
+             videoFrame=insertText(videoFrame,[50,50],nextId-1,'FontSize',50,'BoxColor','blue')
+             ; 
+             step(videoPlayer,videoFrame);
+             imshow(videoFrame);
+             </remarks>
+             <param name="fileName">Input argument #1</param>
+             <param name="position">Input argument #2</param>
+             <returns>An MWArray containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:HeadlightTracking.HeadLight.HeadlightTracking(System.Int32)">
+             <summary>
+             Provides the standard 0-input MWArray interface to the HeadlightTracking MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             imshow(videoFrame);
+             axis off
+             videoFrame = insertObjectAnnotation(videoFrame, 'rectangle',bboxes,0);
+             videoFrame=insertText(videoFrame,[50,50],nextId-1,'FontSize',50,'BoxColor','blue')
+             ; 
+             step(videoPlayer,videoFrame);
+             imshow(videoFrame);
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:HeadlightTracking.HeadLight.HeadlightTracking(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides the standard 1-input MWArray interface to the HeadlightTracking MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             imshow(videoFrame);
+             axis off
+             videoFrame = insertObjectAnnotation(videoFrame, 'rectangle',bboxes,0);
+             videoFrame=insertText(videoFrame,[50,50],nextId-1,'FontSize',50,'BoxColor','blue')
+             ; 
+             step(videoPlayer,videoFrame);
+             imshow(videoFrame);
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="fileName">Input argument #1</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:HeadlightTracking.HeadLight.HeadlightTracking(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray,MathWorks.MATLAB.NET.Arrays.MWArray)">
+             <summary>
+             Provides the standard 2-input MWArray interface to the HeadlightTracking MATLAB
+             function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             imshow(videoFrame);
+             axis off
+             videoFrame = insertObjectAnnotation(videoFrame, 'rectangle',bboxes,0);
+             videoFrame=insertText(videoFrame,[50,50],nextId-1,'FontSize',50,'BoxColor','blue')
+             ; 
+             step(videoPlayer,videoFrame);
+             imshow(videoFrame);
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="fileName">Input argument #1</param>
+             <param name="position">Input argument #2</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:HeadlightTracking.HeadLight.HeadlightTracking(System.Int32,MathWorks.MATLAB.NET.Arrays.MWArray[]@,MathWorks.MATLAB.NET.Arrays.MWArray[])">
+             <summary>
+             Provides an interface for the HeadlightTracking function in which the input and
+             output
+             arguments are specified as an array of MWArrays.
+             </summary>
+             <remarks>
+             This method will allocate and return by reference the output argument
+             array.<newpara></newpara>
+             M-Documentation:
+             imshow(videoFrame);
+             axis off
+             videoFrame = insertObjectAnnotation(videoFrame, 'rectangle',bboxes,0);
+             videoFrame=insertText(videoFrame,[50,50],nextId-1,'FontSize',50,'BoxColor','blue')
+             ; 
+             step(videoPlayer,videoFrame);
+             imshow(videoFrame);
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return</param>
+             <param name= "argsOut">Array of MWArray output arguments</param>
+             <param name= "argsIn">Array of MWArray input arguments</param>
+            
+        </member>
+        <member name="M:HeadlightTracking.HeadLight.WaitForFiguresToDie">
+             <summary>
+             This method will cause a MATLAB figure window to behave as a modal dialog box.
+             The method will not return until all the figure windows associated with this
+             component have been closed.
+             </summary>
+             <remarks>
+             An application should only call this method when required to keep the
+             MATLAB figure window from disappearing.  Other techniques, such as calling
+             Console.ReadLine() from the application should be considered where
+             possible.</remarks>
+            
+        </member>
+    </members>
+</doc>
