@@ -22,6 +22,8 @@ view(response)  #可以将获取的响应在浏览器中打开
 
 # 在根目录下执行scrapy crawl cnblogs 就能启动名称为cnblogs的爬虫
 import scrapy
+from cnblogSpider.items import CnblogspiderItem
+from scrapy import Selector
 class CnblogsSpider(scrapy.Spider):
     name="cnblogs" #爬虫的名字
     allowed_domain=["cnblogs.com"] #允许的域名
@@ -36,9 +38,23 @@ class CnblogsSpider(scrapy.Spider):
             title=paper.xpath(".//*[@class='postTitle']/a/text()").extract()[0]
             time=paper.xpath(".//*[@class='dayTitle']/a/text()").extract()[0]
             content=paper.xpath(".//*[@class='postTitle']/a/text()").extract()[0]
-            print (url,title,time,content)
-        
+            item=CnblogspiderItem(url=url,title=title,time=time,content=content)
+            request=scrapy.Request(url=url,callback=self.pare_body)
+            request.meta['item']=item #将item暂存
+           # print (item)
+            yield request
+        #代码最后使用yield关键字提交item,讲parse方法打造成一个生成器
+        next_page=Selector(response).re(u'<a href="(\S*)">下一页</a>')  #会返回下一页的连接
+        #next_page=Selector(response).xpath("//div[@id='nav_next_page']/a/@href").extract()
+        if next_page:
+            yield scrapy.Request(url=next_page[0],callback=self.parse)
         #从每篇文章中抽取数据
-    
+    def pare_body(self,response):
+        item=response.meta['item']
+        body=response.xpath(".//*[@class='postBody']")
+        item['cimage_urls']=body.xpath('.//img//@src').extract()
+        yield item
+        
+        
     
     

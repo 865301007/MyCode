@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for cnblogSpider project
+# Scrapy settings for blacklist project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,38 +9,17 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'cnblogSpider'
+BOT_NAME = 'blacklist'
 
-SPIDER_MODULES = ['cnblogSpider.spiders']
-NEWSPIDER_MODULE = 'cnblogSpider.spiders'
+SPIDER_MODULES = ['blacklist.spiders']
+NEWSPIDER_MODULE = 'blacklist.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'cnblogSpider (+http://www.yourdomain.com)'
+#USER_AGENT = 'blacklist (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
-
-ITEM_PIPELINES={
-        'cnblogSpider.pipelines.CnblogspiderPipeline':300,
-        #'scrapy.pipelines.files.Files.Pipeline':1,    #文件下载
-        'scrapy.pipelines.images.ImagesPipeline':1
-        }
-
-IMAGES_STORE = 'D:\\cnblogs'
-IMAGES_URLS_FIELD = 'cimage_urls'
-IMAGES_RESULT_FIELD = 'cimages'
-IMAGES_EXPIRES = 30
-IMAGES_THUMBS = {
-    'small': (50, 50),
-    'big': (270, 270),
-}
-#FILES_STORE='D:\\cnblogs'
-#FILES_URLS_FIELD='file_urls'
-#FILES_RESULT_FIELD='files'
-#FILES_EXPIRES=30 #30天过期
-
-
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -68,13 +47,13 @@ IMAGES_THUMBS = {
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'cnblogSpider.middlewares.CnblogspiderSpiderMiddleware': 543,
+#    'blacklist.middlewares.BlacklistSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'cnblogSpider.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'blacklist.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -86,7 +65,7 @@ IMAGES_THUMBS = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'cnblogSpider.pipelines.CnblogspiderPipeline': 300,
+#    'blacklist.pipelines.BlacklistPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
