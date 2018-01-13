@@ -8,13 +8,9 @@
 import scrapy
 
 
-class BlacklistItem(scrapy.Item):
+class PersonalItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     name=scrapy.Field()
-    id_number=scrapy.Field()
-    tel=scrapy.Field()
-    wechat=scrapy.Field()
-    alipay=scrapy.Field()
     address=scrapy.Field()
-    
+    person_id=scrapy.Field()
