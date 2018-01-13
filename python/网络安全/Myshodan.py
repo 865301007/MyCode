@@ -7,7 +7,7 @@ Created on Sun Jan  7 18:58:52 2018
 
 import shodan
 
-SHODAN_API_KEY = "3BLrIqmeSmSJ0IybTMsNN1E4AKIEyixd"
+SHODAN_API_KEY = "XXXX"
 
 api = shodan.Shodan(SHODAN_API_KEY)
 # Wrap the request in a try/ except block to catch errors
