@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmu.mall.orderindex.tangkai.mapper.OrderGoodsMapper">
+
+	<resultMap id="GoodsBaseMap"
+		type="com.xmu.mall.orderindex.tangkai.model.OrderGoods">
+		<id column="goods_id" property="id" jdbcType="INTEGER" />
+		<result column="goods_name" property="name" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="goods_number" property="num" jdbcType="INTEGER" />
+		<result column="goods_price" property="price" jdbcType="DOUBLE" />
+
+	</resultMap>
+
+	<select id="getAllGoodsByOrderId" parameterType="long"
+		resultMap="GoodsBaseMap">
+		SELECT * FROM order_goods,goods WHERE
+		order_id=#{order_id} AND
+		order_goods.goods_id=goods.id
+	</select>
+
+
+	<insert id="addOrderGoods" parameterType="com.xmu.mall.orderindex.tangkai.model.OrderGoods">
+		insert into order_goods values(null, #{order_id}, #{goods_id},
+		#{name}, #{num}, #{price})
+	</insert>
+
+</mapper>

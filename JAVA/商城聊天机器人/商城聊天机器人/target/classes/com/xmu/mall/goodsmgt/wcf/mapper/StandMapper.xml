@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmu.mall.goodsmgt.wcf.mapper.StandMapper">
+
+	<resultMap id="StandMapper" type="com.xmu.mall.goodsmgt.wcf.model.Stand">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="goods_id" property="goods_id" jdbcType="INTEGER" />
+		<result column="mid_user_price" property="mid_user_price" jdbcType="NUMERIC" />
+		<result column="market_price" property="market_price" jdbcType="NUMERIC" />
+		<result column="real_price" property="real_price" jdbcType="NUMERIC" />
+		<result column="on_market_time" property="on_market_time" jdbcType="TIMESTAMP" />
+		<result column="off_market_time" property="off_market_time" jdbcType="TIMESTAMP" />
+		<result column="pre_sale_count" property="pre_sale_count" jdbcType="INTEGER" />
+	</resultMap>
+	<select id="getStandList" resultMap="StandMapper">
+	select * from stand
+	</select>
+	
+	<insert id="addStand">
+	insert into stand values
+	(null,
+	#{goods_id,jdbcType=INTEGER},
+	#{mid_user_price,jdbcType=NUMERIC},
+	#{market_price,jdbcType=NUMERIC},
+	#{real_price,jdbcType=NUMERIC},
+	#{on_market_time,jdbcType=TIMESTAMP},
+	#{off_market_time,jdbcType=TIMESTAMP},
+	#{pre_sale_count,jdbcType=INTEGER})
+	</insert>
+	
+	<delete id="deleteStandById" parameterType="long">
+	delete from stand where id=#{id}
+	</delete>
+	
+	<select id="getStandById" parameterType="long" resultMap="StandMapper">
+	select * from stand where id=#{id}
+	</select>
+	
+	<update id="updateStand">
+	update stand set
+	goods_id=#{goods_id},
+	mid_user_price=#{mid_user_price},
+	market_price=#{market_price},
+	real_price=#{real_price},
+	on_market_time=#{on_market_time},
+	off_market_time=#{off_market_time},
+	pre_sale_count=#{pre_sale_count}
+	where id=#{id}
+	</update>
+	
+	<select id="getGoodsPrice" parameterType="long" resultMap="StandMapper">
+	select * from stand where goods_id=#{goods_id}
+	</select>
+		<update id="deleteGoodsNumById">
+	<!-- 
+	update goods set stock_count=stock_count-#{num}, where id=#{goodsId}; -->
+    update stand set pre_sale_count=pre_sale_count+#{num} where goods_id=#{goodsId}
+	</update>
+
+</mapper>

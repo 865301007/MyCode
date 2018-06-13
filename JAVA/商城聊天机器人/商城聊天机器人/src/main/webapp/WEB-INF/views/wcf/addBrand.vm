@@ -1,0 +1,47 @@
+#tiles_insertTemplate({"template":"wcf/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "添加品牌"})#end
+#tiles_putAttribute({"name":"header"}) 
+#parse("wcf/header.vm")
+#end 
+#tiles_putAttribute({"name":"body"})
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+<div class="row" align="center">
+<form action="added" method="post" accept-charset="UTF-8">
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="name" name="name" type="text" class="validate">
+          <label for="name">品牌名称</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="website" name="website" type="text" class="validate">
+          <label for="website">品牌网址</label>
+        </div>
+      </div>
+       <div class="row">
+        <div class="input-field col s12">
+          <input id="description" name="description" type="text" class="validate">
+          <label for="description">品牌介绍</label>
+        </div>
+      </div>
+       <p>
+      <input type="checkbox"  name="type" id="test5" value="1" />
+      <label for="test5">显示？</label>
+    </p>
+ <button class="btn waves-effect waves-light" type="submit" >确定
+    <i class="material-icons right">send</i>
+  </button>
+    <input class="btn waves-effect waves-light" type="reset" value="重置"/>
+</form>
+</div>
+#end 
+#tiles_putAttribute({"name":"footer"})
+#parse("wcf/footer.vm") 
+#end 
+#end
+
+

@@ -1,0 +1,14 @@
+  
+  
+
+  <nav>
+    <div class="nav-wrapper black ">
+      <a href="/JavaEE" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/JavaEE/GoodsManage/showList">商品资料管理</a></li>
+        <li><a href="/JavaEE/CategoryManage/showList">商品品类管理</a></li>
+        <li><a href="/JavaEE/brandManage/showList">商品品牌管理</a></li>
+        <li><a href="/JavaEE/standManage/showList">商品上下架管理</a></li>
+      </ul>
+    </div>
+  </nav>

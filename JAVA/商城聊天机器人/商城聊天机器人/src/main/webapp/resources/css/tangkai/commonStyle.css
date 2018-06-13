@@ -1,0 +1,85 @@
+﻿.body, .html {
+    margin: 0;
+    padding: 0;
+}
+
+.header-color {
+    background: #eeeeee;
+}
+
+.mdl-layout__header-row .mdl-navigation__link {
+    color: #565656;
+}
+
+.mdl-layout-title {
+    color: #333333;
+    flex-grow: 1;
+    margin-left: 30px;
+}
+
+.mdl-layout-spacer{
+	width: 10px;
+	flex-grow: 1;
+}
+
+.my_header {
+	padding-left: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.mdl-navigation{
+	flex-grow: 0
+}
+
+.my-back {
+	flex-grow: 1
+}
+
+.my-footer-container {
+    padding: 0 5px 0 0;
+    padding-right: 0;
+    background: #eeeeee;
+    color: #111111;
+    box-shadow: -1px 0 6px #494949;
+    width: 100%;
+    justify-content: space-between;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.my-footer-container span{
+    margin-right: 16px;
+}
+
+.footer-text {
+    padding: 10px 10px 10px 5px;
+    flex-grow: 4;
+}
+
+.footer-font {
+	font-size: 16px;
+}
+
+.item-pay {
+    display: block;
+    float: right;
+    margin-right: 0;
+    flex-grow: 1;
+}
+
+.item-pay-btn{
+    border: none;
+    float: right;
+    height: 100%;
+    width: 120px;
+    overflow: hidden;
+    color: #fff;
+    background-color: red;
+    text-align: center;
+    transition: .2s ease-out;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.12), 0px 1px 2px rgba(0,0,0,0.24);
+    font-size: 16px;
+}

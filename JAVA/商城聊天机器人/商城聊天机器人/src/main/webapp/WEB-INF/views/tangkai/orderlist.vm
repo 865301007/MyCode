@@ -1,0 +1,128 @@
+#tiles_insertTemplate({"template":"../layout/tangkai/template.vm"})
+  #tiles_putAttribute({"name":"title", "value": "订单列表"})#end
+
+  #tiles_putAttribute({"name":"header"})
+  	#parse("../layout/tangkai/header.vm")
+  	<script type="text/javascript">
+	<!--
+	function getLocalTime(nS) {     
+		return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");  
+		} 
+		
+	function make()
+	{
+		var se=confirm("确认需要定制订单吗？");
+		return se;
+	}
+	
+	function ship(code)
+	{
+		var se=confirm("确定要发货吗？");
+		return se;
+	}
+	//-->
+	</script>
+  #end
+  #tiles_putAttribute({"name":"body"})
+  
+    <div class=>
+		<form>
+			<table class="order_table" >
+			<caption>订单列表</caption>
+				<tr>
+					<th>订单号</th>
+					<th>订单用户ID</th>
+					<th>订单状态</th>
+					<th>收货人</th>			
+					<th>收货地址</th>
+					<th>订单总价</th>
+					<th>备注</th>
+					<th>下单时间</th>
+					<th>发货时间</th>
+					<th>快递单号</th>
+					<th>是否加急</th>
+					<th>操作</th>
+				</tr>
+	     		#foreach($order in $orderlist)
+				<tr>
+					#if($order.getOrder_sn() != "" && $order.getOrder_sn())
+						<td>$order.getOrder_sn()</td>
+					#else
+						<td></td>
+					#end
+					
+					<td>$order.getUser_id()</td>
+					#if($order.getOrder_status()==0)
+						<td>未付款</td> 
+					#elseif($order.getOrder_status()==1)
+						<td>已付款</td>
+					#elseif($order.getOrder_status()==2)
+						<td>定制中</td>
+					#elseif($order.getOrder_status()==3)
+						<td>已发货</td>
+					#elseif($order.getOrder_status()==4)
+						<td>已收货</td>
+					#else
+						<td>取消</td>
+					#end
+					<td>$order.getConsignee()</td>
+					<td>$order.getAddress()</td>					
+					<td>￥$order.getOrder_price()</td>
+					<td>$order.getRemark()</td>				
+					<td><script type="text/javascript">document.write(getLocalTime($order.getAdd_time()));</script></td>
+					#if($order.getMake_time() == 0)
+						<td> </td>
+					#else
+						<td><script type="text/javascript">document.write(getLocalTime($order.getMake_time()));</script></td>
+					#end
+					#if($order.getExpressCode() != "" && $order.getExpressCode())
+						<td>$order.getExpressCode()</td>
+					#else
+						<td></td>
+					#end
+					
+					<td>$order.getIsUrgency()</td>
+					<td>
+						<div>
+							<a href="lookupOrder?order_id=$order.getOrder_id()"  class="table_button" >查看</a>
+						</div>
+						<div>
+							<a href="modifyOrder?order_id=$order.getOrder_id()" class="table_button" >修改</a>
+						</div>
+						#if($order.getOrder_status()==1)
+						<div>
+							<a href="check?order_id=$order.getOrder_id()" onclick="return make();" class="table_button" >定制</a>
+						</div>
+						#elseif($order.getOrder_status()==2)
+						<div>
+							<a href="checkExpressCode?order_id=$order.getOrder_id()" onclick="return ship();" class="table_button" >发货</a>
+						</div>
+						#end
+					</td>				
+				</tr>
+				#end
+			</table>
+		</form>
+	</div>
+	
+		#if($page.isHasPrePage())
+			<div class="bottom_right_test"><a href="prePage?currentPage=$page.getCurrentPage()"  class="table_button" >前一页</a></div>
+		#else
+			<div class="bottom_right_test"><a class="table_button_unable" >前一页</a></div>
+		#end
+		
+	  
+		<div class="bottom_cur_page"><lable>$page.getCurrentPage()/$page.getTotalPage()</lable></div>
+		
+		#if($page.isHasNextPage())
+			<div class="bottom_right_test_sec"><a href="nextPage?currentPage=$page.getCurrentPage()"  class="table_button" >下一页</a></div>
+		#else
+			<div class="bottom_right_test_sec"><a class="table_button_unable" >下一页</a></div>
+		#end
+		<br/><br/>
+	
+  #end
+  #tiles_putAttribute({"name":"footer"})
+    #parse("../layout/tangkai/footer.vm")
+  #end
+#end

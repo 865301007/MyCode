@@ -1,0 +1,18 @@
+#tiles_insertTemplate({"template":"../layout/zjh/cart_template.vm"})
+	#tiles_putAttribute({"name":"title", "value": "后台管理界面"})#end
+	#tiles_putAttribute({"name":"body"})
+	<link rel="stylesheet" href="#springUrl('/resources/css/zjh/index.css')">
+	<link href="#springUrl('/resources/css/tangkai/manager_success.css')" type="text/css" rel="stylesheet">
+		<div class="success">
+             <img src="#springUrl('/resources/images/tangkai/success.png')" />
+            <p>恭喜您登录成功！</p>
+            <div class="s_msg">
+                <div class="s_title">欢迎来到：<span class="s_red">商城后台管理系统</span></div>
+                <div class="s_title">您可以进行以下几种商城后台管理：</div>
+                <span class="s_redlink"><a href="#springUrl('/GoodsMgt')" target="_blank">商品管理</a></span></br></br>
+				<span class="s_redlink"><a href="#springUrl('/orderList/')" target="_blank">订单管理</a></span>
+            </div>
+        </div>
+	#end
+#end
+	

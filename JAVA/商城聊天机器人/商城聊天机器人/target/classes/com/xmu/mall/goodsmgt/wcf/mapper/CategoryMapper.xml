@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmu.mall.goodsmgt.wcf.mapper.CategoryMapper">
+
+	<resultMap id="CategoryMapper" type="com.xmu.mall.goodsmgt.wcf.model.Category">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="upper_category_id" property="upper_category_id" jdbcType="INTEGER" />
+		<result column="rank" property="rank" jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="INTEGER"/>
+		<result column="priority" property="priority" jdbcType="INTEGER" />
+	</resultMap>
+	<select id="getCategoryList" resultMap="CategoryMapper">
+		SELECT * FROM category
+	</select>
+	
+	<insert id="addCategory" useGeneratedKeys="true" keyProperty="id">
+	
+	insert into category values(null,#{name,jdbcType=VARCHAR},#{upper_category_id,jdbcType=INTEGER},#{rank,jdbcType=INTEGER},#{type,jdbcType=INTEGER},#{priority,jdbcType=INTEGER})
+
+	</insert >
+	
+	<delete id="deleteCategoryById"  parameterType="long">
+	delete from category where id=#{id}
+	</delete>
+	
+	<select id="getCategoryById"  parameterType="long" resultMap="CategoryMapper" >
+	select * from category where id=#{id}
+	</select>
+	
+	<update id="updateCategory">
+	update category set name=#{name},upper_category_id=#{upper_category_id},rank=#{rank},type=#{type},priority=#{priority} where id=#{id}
+	</update>
+	
+
+
+</mapper>

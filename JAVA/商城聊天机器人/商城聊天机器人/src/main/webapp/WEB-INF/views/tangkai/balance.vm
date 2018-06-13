@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>确认订单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="#springUrl('/resources/css/tangkai/material.min.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/tangkai/commonStyle.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/tangkai/balanceStyle.css')">
+    <script type="text/javascript" src="#springUrl('/resources/js/tangkai/material.min.js')"></script>
+    <script type="text/javascript" src="#springUrl('/resources/js/tangkai/myCart.js')"></script>
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <nav class="my-back">
+                    <a class="mdl-navigation__link" href="#" onclick="window.history.back();">
+                    <img class="back-arrow" src="#springUrl('/resources/images/tangkai/ic_arrow_back.png')"/>
+                    </a>
+                </nav>
+                <span class="mdl-layout-title">确认订单</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <form action="chooseAddress" method="get">
+            <div class="address_info">
+                <button type="submit" class="address_btn">
+                    <div class="box">
+                        <div class="info">
+                            #if(${userAddress})
+                            	<div class="personal_info">
+                                	<label>收货人：${userAddress.consignee}</label>
+                                	<label>联系电话：${userAddress.telephone}</label>
+                            	</div>
+                            	<div class="personal_address">
+                                	<div class="ic-location">
+                                    	<img class="right-arrow" src="#springUrl('/resources/images/tangkai/ic_location.png')"></img>
+                                	</div>
+                                	<p>${userAddress.detail}</p>
+                            	</div>
+                            #else
+                            	<div class="personal_info">
+                                	<label>请选择收货地址</label>
+                            	</div>
+                            #end
+                        </div>
+                        <div class="right-arrow-container">
+                            <img class="right-arrow" src="#springUrl('/resources/images/tangkai/ic_arrow_right.png')"></img>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </form>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <ul class="mdl-list cart-list">
+                	#foreach( $goods in $goodslist)
+                    	<li class="mdl-list__item mdl-list__item--three-line">
+                        	<span class="item_img">
+                        	    <img src="#springUrl('/resources/images/tangkai/default.jpg')" class="item_img"></image>
+                       	 	</span>
+                       	 	<span class="mdl-list__item-primary-content item-second">
+                        	<span class="item_text">商品名字：${goods.getName()}</span>
+                          	  	<span class="item_text mdl-list__item-text-body mylist-auto-height">
+                            		  商品描述：${goods.getDescription()}
+                          	  	</span>
+                        	<span class=" item_text mdl-list__item-text-body mylist-auto-height">
+                            	<span class="item-price">商品价格：￥${goods.getReal_price()}</span>  
+                        	</span>                     
+                    	</li>               		
+                	#end
+                    <li class="line-spacer"></li>
+                    <li class="mdl-list__item mdl-list__item--three-line choose-invoice">
+                        <span class="item-second choose-invoice-left">
+                            <span class="item_text mdl-list__item-text-body mylist-auto-height choose-invoice-text">
+                            是否开具发票
+                            </span>
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                          <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-1">
+                            <input type="checkbox" id="list-switch-1" class="mdl-switch__input"/>
+                          </label>
+                        </span>
+                    </li>
+                    <li class="mdl-list__item mdl-list__item--three-line choose-invoice">
+                        <span class="item-second choose-invoice-left">
+                            <span class="item_text mdl-list__item-text-body mylist-auto-height choose-invoice-text">
+                            退还无忧
+                            </span>
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                          <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-2">
+                            <input type="checkbox" id="list-switch-2" class="mdl-switch__input"/>
+                          </label>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <form action="addOrder" method="post">
+            
+            <!-- <input type="hidden" name="_id" value="${order.getOrder_id()}"></input> -->
+            <footer class="mdl-mini-footer my-footer-container">
+            	<input type="hidden" name="address_id" value="${userAddress.getAddress_id()}"></input>
+                    <div class="mdl-mini-footer__left-section footer-text">
+                        <ul class="mdl-mini-footer__link-list">
+                            <span class="total-text">
+                                <label class="footer-font">实付款：<label>￥${orderReadyPay.getOrder_price()}</label></label>
+                            </span>
+                        </ul>
+                    </div>
+                    <div class="item-pay">
+                        <button type="submit" class="item-pay-btn">立即下单</button>
+                    </div>
+            </footer>
+        </form>
+    </div>
+</body>
+
+</html>

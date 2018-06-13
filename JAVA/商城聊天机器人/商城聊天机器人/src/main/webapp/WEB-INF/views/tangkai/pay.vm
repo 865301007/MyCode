@@ -1,0 +1,96 @@
+#tiles_insertTemplate({"template":"../layout/zjh/index_template.vm"})
+	#tiles_putAttribute({"name":"title", "value": "商城收银台"})#end
+	#tiles_putAttribute({"name":"body"})
+	<link rel="stylesheet" href="#springUrl('/resources/css/zjh/index.css')">
+	<script type="text/javascript" src="#springUrl('/resources/js/zjh/index.js')"></script>
+	<style>
+		#list-content
+		{
+			position: absolute;
+			left:0px;
+			top:44%;
+			width:100%;
+			height: 30%;
+			overflow: auto;
+		}
+
+		#list
+		{
+			left:0px;
+			height:24%;
+			width: 100%;
+			background-color: white;
+			border-bottom: 2px solid #cdcdcd;
+		}
+
+		#list-left,#list-right
+		{
+			height:100%;
+			line-height:35px;
+			vertical-align:middle;
+			display:inline-block;
+		}
+
+		#list-left
+		{
+			width:40%;
+			text-align:left;
+			height:100%;
+			font-size:16px;
+		}
+
+		#list-right
+		{
+			width:50%;
+			text-align:right;
+			height:100%;
+			font-size:12px;
+			color:#c0c0c0;
+		}
+		button{  
+    		width: 200px;  
+    		height: 50px;  
+    		margin-top: 25px;  
+    		background: #1E90FF;  
+    		border-radius: 10px;  
+    		border:none;
+    		font-size: 18px;
+    		font-weight: 700;  
+    		color: #fff;
+		}
+		button:hover {
+			background: #79A84B;  
+			outline: 0;
+		}
+	</style>
+		<div id="header">
+        	<div id="header-left">
+        		<img src="#springUrl('/resources/images/zjh/returnPointer.png')" onclick="window.history.back();">
+        	</div>
+            <div id="header-middle">商城收银台</div>
+            
+            <div id="header-right"></div>
+		</div>
+		<div id="body-content">
+			<form  action="pay" method="get">
+				<div id="list-content">
+					<div id="list">
+						<div id="list-left">微信支付</div>
+						<div id="list-right"><input type="radio" name="pay" value="微信支付"/></div>
+					</div>
+					<div id="list">
+						<div id="list-left">支付宝支付</div>
+						<div id="list-right"><input type="radio" name="pay" value="支付宝支付"/></div>
+					</div>
+					<div id="list">
+						<div id="list-left">银行卡支付</div>
+						<div id="list-right"><input type="radio" name="pay" value="银行卡支付"/></div>
+					</div>
+				</div>
+				<div style="width:100%; text-align:center;margin:0 auto;			position: absolute;top:80%;">
+					<button  align="center">立即支付￥${pay_price}</button>
+				</div>
+        	</form>
+		</div>
+	#end
+#end

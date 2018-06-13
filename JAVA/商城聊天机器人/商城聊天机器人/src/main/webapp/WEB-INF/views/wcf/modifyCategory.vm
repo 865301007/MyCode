@@ -1,0 +1,48 @@
+#tiles_insertTemplate({"template":"wcf/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "修改品类"})#end
+#tiles_putAttribute({"name":"header"}) 
+#parse("wcf/header.vm")
+#end 
+#tiles_putAttribute({"name":"body"})
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+
+<form action="modifyed" method="post" accept-charset="UTF-8">
+      <div class="row">
+        <div class="input-field col s12">
+<input id="name" type="text" name="name"  class="validate" value="$Category.name"/>
+          <label for="name">品类名称</label>
+</div>
+</div>
+<div class="row">
+        <div class="input-field col s12">
+<input id="priority" type="text" name="priority" class="validate" value="$Category.priority"/>
+ <label for="priority">商品显示顺序0-250</label>
+</div>
+</div>
+ <div class="input-field col s12">
+      <select  name="upper_category_id" class="browser-default">
+        <option value="$Category.name" disabled selected>上级分类</option>
+#foreach($Category in ${CategoryList}) 
+        <option value="$Category.id">$Category.name</option>    
+#end
+     </select>
+   </div>
+
+<button class="btn waves-effect waves-light" type="submit" >确定
+    <i class="material-icons right">send</i>
+  </button>
+    <input class="btn waves-effect waves-light" type="reset" value="重置"/>
+    
+              <p style="visibility:hidden;">
+<input  name="id" value="$Category.id">
+</p>
+</form>
+#end 
+#tiles_putAttribute({"name":"footer"})
+#parse("wcf/footer.vm") 
+#end 
+#end
+
+

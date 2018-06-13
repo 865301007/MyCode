@@ -1,0 +1,101 @@
+#tiles_insertTemplate({"template":"../layout/tangkai/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "订单修改"})#end
+#tiles_putAttribute({"name":"header"}) #parse("../layout/tangkai/header.vm")
+<script type="text/javascript">
+	<!--
+	function getLocalTime(nS) {     
+		return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+		} 
+	//-->
+	</script>
+#end #tiles_putAttribute({"name":"body"})
+
+<div>
+	<form action="updateOrder">
+		<table class="manage">
+			<tr>
+				<td class="manage_title">修改订单信息</td>
+
+			</tr>
+			<tr>
+				<td><HR style="border: 6 groove #ff0033" align=center
+						width="100%" SIZE=4></td>
+				<td><hr
+						style="width: 100%; text-align: center; vertical-align: middle" /></td>
+			</tr>
+
+			<tr>
+				<td class="manage_left">订单号</td>
+				<td class="manage_right">$order.getOrder_id()</td>
+				<input type="hidden" name="order_id" value="$order.getOrder_id()" />
+			</tr>
+			<tr>
+				
+				<td class="manage_left">订单状态</td>
+				<td class="manage_right"><select name="order_status">
+						#if($order.getOrder_status()==0)
+						<option value=0 selected>未付款</option> #else
+						<option value=0>未付款</option> #end #if($order.getOrder_status()==1)
+						<option value=1 selected>已付款</option> #else
+						<option value=1>已付款</option> #end #if($order.getOrder_status()==2)
+						<option value=2 selected>定制中</option> #else
+						<option value=2>定制中</option> #end #if($order.getOrder_status()==3)
+						<option value=3 selected>已发货</option> #else
+						<option value=3>已发货</option> #end #if($order.getOrder_status()==4)
+						<option value=4 selected>已收货</option> #else
+						<option value=4>已收货</option> #end #if($order.getOrder_status()==5)
+						<option value=5 selected>取消</option> #else
+						<option value=5>取消</option> #end
+				</select></td>
+			</tr>
+			<tr>
+				<td class="manage_left">订单备注</td>
+				<td class="manage_right"><input type="text"
+					class="manage_input" value="$order.getRemark()" name="remark" /></td>
+			</tr>
+			<tr>
+				<td class="manage_left">快递单号</td>
+				<td class="manage_right"><input type="text"
+					class="manage_input" value="$order.getExpressCode()" name="expressCode" /></td>
+			</tr>
+			<tr>
+				<td class="manage_left">是否加急</td>
+				<td class="manage_right"><select name="isUrgency">
+						#if($order.getIsUrgency()=="Y")
+						<option value="Y" selected>是</option> #else
+						<option value="Y">是</option> #end #if($order.getIsUrgency()=="N")
+						<option value="N" selected>否</option> #else
+						<option value="N">否</option> #end
+				</select></td>
+			</tr>
+
+			<tr>
+				<td class="manage_title">修改收货信息</td>
+			</tr>
+			<tr>
+				<td><HR style="border: 6 groove #ff0033" align=center
+						width="100%" SIZE=4></td>
+				<td><hr
+						style="width: 100%; text-align: center; vertical-align: middle" /></td>
+			</tr>
+			<tr>
+				<td class="manage_left">收货人姓名</td>
+				<td class="manage_right"><input type="text"
+					class="manage_input" value="$order.getConsignee()" name="consignee" /></td>
+			</tr>
+			<tr>
+				<td class="manage_left">收货地址</td>
+				<td class="manage_right"><input type="text"
+					class="manage_input" value="$order.getAddress()" name="address"/></td>
+			</tr>
+			<tr>
+				<td class="manage_left">收货人电话</td>
+				<td class="manage_right"><input type="text"
+					class="manage_input" value="$order.getTelephone()" name="telephone" /></td>
+			</tr>
+		</table>
+		<input type="submit" class="button" value="更新"></input>
+	</form>
+</div>
+#end #tiles_putAttribute({"name":"footer"})
+#parse("../layout/tangkai/footer.vm") #end #end

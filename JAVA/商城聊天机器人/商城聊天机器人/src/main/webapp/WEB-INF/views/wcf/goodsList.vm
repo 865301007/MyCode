@@ -1,0 +1,76 @@
+#tiles_insertTemplate({"template":"wcf/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "商品列表"})#end
+#tiles_putAttribute({"name":"header"}) 
+#parse("wcf/header.vm")
+#end 
+#tiles_putAttribute({"name":"body"})
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+
+<table id="mytable" class="bordered striped highlight">
+	<caption>
+	<h3>商品列表</h3>
+	<a class="waves-effect waves-light btn" href="add">添加</a>
+	</caption>
+	<tbody>
+		<tr>
+			<th scope="col">商品编号</th>
+			<th scope="col">商品名称</th>
+			
+			<th scope="col">市场价格</th>
+			<th scope="col">真实价格</th>
+			<th scope="col">库存</th>
+			<th scope="col">操作</th>
+		</tr>
+		
+		#foreach($goods in ${goodsList})
+		</tr>
+		<td>$goods.serial_code
+		</td>
+		<td>
+		$goods.name
+		</td>
+		<td>
+		$goods.market_price
+		</td>
+		<td>
+		$goods.real_price
+		</td>
+		<td>
+		$goods.stock_count
+		</td>
+		<td>
+		<a href="delete?id=$goods.id">删除</a>|
+		<a href="modify?id=$goods.id">修改</a>
+		</td>
+		</tr>
+		#end
+	</tbody>
+</table>
+<div class="valign-wrapper">
+#if($page.isHasPrePage())
+			<div class="bottom_right_test"><a href="prePage?currentPage=$page.getCurrentPage()"  class="waves-effect waves-light btn" >前一页</a></div>
+#else
+			<div class="bottom_right_test"><a class="btn disabled" >前一页</a></div>
+#end
+		
+	  
+		<div class="bottom_cur_page"><lable>$page.getCurrentPage()/$page.getTotalPage()</lable></div>
+		
+		#if($page.isHasNextPage())
+			<div class="bottom_right_test_sec"><a href="nextPage?currentPage=$page.getCurrentPage()"  class="waves-effect waves-light btn" >下一页</a></div>
+		#else
+			<div class="bottom_right_test_sec"><a class="btn disabled" >下一页</a></div>
+		#end
+		<br/><br/>
+</div>
+
+
+
+#end 
+#tiles_putAttribute({"name":"footer"})
+#parse("wcf/footer.vm") 
+#end 
+#end
+

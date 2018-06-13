@@ -1,0 +1,57 @@
+#tiles_insertTemplate({"template":"wcf/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "上下架列表"})#end
+#tiles_putAttribute({"name":"header"}) 
+#parse("wcf/header.vm")
+#end 
+#tiles_putAttribute({"name":"body"})
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+
+<table id="mytable" id="mytable" class="bordered striped highlight">
+	<caption>
+	<h3>上下架列表</h3>
+	<a class="waves-effect waves-light btn" href="add">添加</a>
+	</caption>
+	<tbody>
+		<tr>
+			<th scope="col">商品编号</th>
+			<th scope="col">商品名称</th>
+			<th scope="col">上架时间</th>
+			<th scope="col">下架时间</th>
+			<th scope="col">预售数量</th>
+			<th scope="col">操作</th>
+		</tr>
+		#foreach($index in ${indexList})
+		</tr>
+		<td>
+		$!goodsList.get($index).serial_code
+		</td>
+		<td>
+		$!goodsList.get($index).name
+		</td>
+		<td>
+		$!standList.get($index).on_market_time
+		</td>
+				<td>
+		$!standList.get($index).off_market_time
+		</td>
+				<td>
+		$!standList.get($index).pre_sale_count
+		</td>
+		<td>
+		<a href="delete?id=$!standList.get($index).id">删除</a>|
+		<a href="modify?id=$!standList.get($index).id">修改</a>
+		</td>
+		</tr>
+		#end
+	</tbody>
+</table>
+#end 
+#tiles_putAttribute({"name":"footer"})
+#parse("wcf/footer.vm") 
+#end 
+#end
+
+
+

@@ -1,0 +1,119 @@
+#tiles_insertTemplate({"template":"../layout/zjh/cart_template.vm"})
+#tiles_putAttribute({"name":"title", "value": "订单查看"})#end
+#tiles_putAttribute({"name":"body"})
+<link rel="stylesheet" href="#springUrl('/resources/css/tangkai/style.css')">
+<script type="text/javascript">
+	function getLocalTime(nS) {     
+		return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+		} 
+	function getStatus(value) {     
+		if(parseInt(value) == 0)
+			return "未付款";
+		else if(parseInt(value) == 1)
+			return "已付款";
+		else if(parseInt(value) == 2)
+			return "定制中";
+		else if(parseInt(value) == 3)
+			return "已发货";
+		else if(parseInt(value) == 4)
+			return "已收货";
+		else return "取消";
+		} 
+</script>
+
+<style>
+#body-content
+{
+	position: absolute;
+	left:0px;
+	top:0%;
+	width:100%;
+	height: 93%;
+	overflow: auto;
+	background: white;
+	border-top: 2px solid #cdcdcd;
+}
+</style>
+
+<div id="body-content">
+	<form>
+		<table class="manage">
+			<lable> <font color="blue">订单基本信息</font></lable>
+			<HR style="border: 6 groove #ff0033" align=center width="100%" SIZE=4>
+			<lable>下单时间:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<script
+				type="text/javascript">document.write(getLocalTime($order.getAdd_time()));</script></lable>
+			</br>
+			</br>
+			<lable>订单状态:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<script
+				type="text/javascript">document.write(getStatus($order.getOrder_status()));</script></lable>
+			</br>
+			</br>
+			<lable>订单备注:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$order.getRemark()</lable>
+			</br>
+			#if($!order.getExpressCode())
+				</br>
+				<lable>快递单号:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$order.getExpressCode()</lable>
+				</br>
+			#else
+				</br>
+				<lable>快递单号:</lable>
+				</br>	
+			#end
+			</br> #if($order.getIsUrgency()=="Y")
+			<lable>是否加急:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp是</lable>
+			</br>
+			</br> #else
+			<lable>是否加急:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp否</lable>
+			</br>
+			</br> #end
+
+			<lable> <font color="blue">收货人信息</font></lable>
+			<HR style="border: 6 groove #ff0033" align=center width="100%" SIZE=4>
+			<lable>收货人姓名:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$order.getConsignee()</lable>
+			</br>
+			</br>
+			<lable>收货人地址:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$order.getAddress()</lable>
+			</br>
+			</br>
+			<lable>收货人电话:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$order.getTelephone()</lable>
+			</br>
+			</br>
+
+			<lable> <font color="blue">商品信息</font></lable>
+			<HR style="border: 3 dotted #ff0033" width="100%" SIZE=4>
+
+			<tr>
+				<td colspan="2">
+					<table class="goods_table">
+						<tr>
+							<td>商品ID</td>
+							<td>商品名称</td>
+							<td>数量</td>
+							<td>单价</td>
+						</tr>
+						#foreach($goods in $goodsList)
+						<tr>
+							<td>$goods.getId()</td>
+							<td>$goods.getName()</td>
+							<td>$goods.getNum()</td>
+							<td>$goods.getPrice()</td>
+						</tr>
+						#end
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="goods_total">总价 : $order.getOrder_price() 元</td>
+			</tr>
+		</table>
+	</form>
+</div>
+<div id="footer">
+			<div><a href="#springUrl('')"><img src="#springUrl('/resources/images/zjh/index-footer-1.png')" /><br/>首页</a></div>
+			<div><a href="javascript:void(0)"><img src="#springUrl('/resources/images/zjh/index-footer-2.png')" /><br/>分类</a></div>
+			<div><a href="javascript:void(0)"><img src="#springUrl('/resources/images/zjh/index-footer-3.png')" /><br/>觅Me</a></div>
+			<div><a href="#springUrl('/cart/index')"><img src="#springUrl('/resources/images/zjh/index-footer-4.png')" /><br/>购物车</a></div>
+			<div><a href="#springUrl('/user/index')"><img src="#springUrl('/resources/images/zjh/index-footer-5.png')" /><br/>我的</a></div>
+</div>
+#end #end

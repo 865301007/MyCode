@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		<link rel="stylesheet" href="#springUrl('/resources/css/zjh/swiper-3.4.2.min.css')">
+		<link rel="stylesheet" href="#springUrl('/resources/css/zjh/modal.css')">
+        <script type="text/javascript" src="#springUrl('/resources/js/zjh/jquery-1.12.3.min.js')"></script>
+        <script type="text/javascript" src="#springUrl('/resources/js/zjh/swiper-3.4.2.jquery.min.js')"></script>
+        <script type="text/javascript" src="#springUrl('/resources/js/zjh/modal.js')"></script>
+		<title>#tiles_insertAttribute({"name":"title"})#end</title>
+	</head>
+	<body>
+		<input id="hiddenSpringUrl" type="hidden" value="#springUrl('')"/>
+		#if ($selects) 
+			<form id="changeConstrainForm" action="#springUrl('/index/changeInSearchPage')" method="post">
+				
+				#if($selects.category_id)
+					<input id="hiddenCategoryId" name="category_id" type="hidden" value="${selects.category_id}"/>
+				#end
+				
+				#if($selects.brand_id)
+					<input id="hiddenBrandId" name="brand_id" type="hidden" value="${selects.brand_id}"/>
+				#end
+				
+				#if($selects.pre_sale_number)
+					<input id="hiddenPreSaleNumber" name="pre_sale_number" type="hidden" value="${selects.pre_sale_number}"/>
+				#end
+				
+				#if($selects.real_price)
+					<input id="hiddenRealPrice" name="real_price" type="hidden" value="${selects.real_price}"/>
+				#end
+				#if($selects.name)
+					<input id="hiddenGoodsName" name="name" type="hidden" value="${selects.name}"/>
+				#end
+			</form>
+		#end
+		#tiles_insertAttribute({"name":"body"})#end
+	</body>
+</html>

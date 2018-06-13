@@ -1,0 +1,71 @@
+#tiles_insertTemplate({"template":"../layout/zjh/index_template.vm"})
+	#tiles_putAttribute({"name":"title", "value": "用户中心"})#end
+	#tiles_putAttribute({"name":"body"})
+	<link rel="stylesheet" href="#springUrl('/resources/css/zjh/index.css')">
+	<link rel="stylesheet" href="#springUrl('/resources/css/tangkai/userStyle.css')">
+	<link rel="stylesheet" href="#springUrl('/resources/css/tangkai/commonStyle.css')">
+	<script type="text/javascript" src="#springUrl('/resources/js/zjh/index.js')"></script>
+		<div id="header">
+        	<div id="header-left"></div>
+            <div id="header-middle">用户中心</div>
+            <div id="header-right"></div>
+		</div>
+		
+		<div id="myheader"><img src="#springUrl('/resources/images/tangkai/user.png')" />
+			<div id="username">${session.getAttribute("user_name")}</div>
+		</div>
+		
+		<div id="order">
+			<div id="order-left">我的订单</div>
+			<div id="order-right"><a href="#springUrl('/user/getAllOrder')">查看所有订单></div>
+			<div style="height:0.5px; background-color:#ac9f97; position:absolute; top:40%; left:5%; width:90%; right:5%;"></div>
+			
+			<div id="order-type">
+				<div><a href="#springUrl('/user/getPendingPayOrder')"><img src="#springUrl('/resources/images/tangkai/pending-payment.png')" /><br/>待付款</a></div>
+				<div><a href="#springUrl('/user/getPendingDeliveryOrder')"><img src="#springUrl('/resources/images/tangkai/pending-delivery.png')" /><br/>待发货</a></div>
+				<div><a href="#springUrl('/user/getPendingReceiveOrder')"><img src="#springUrl('/resources/images/tangkai/pending-receive.png')" /><br/>待收货</a></div>
+				<div><a href="#javascript:void(0)"><img src="#springUrl('/resources/images/tangkai/pending-receive.png')" /><br/>退还/售后</a></div>
+				
+			</div>
+		
+		</div>
+		
+		<div id="list-content">
+			<div id="list">
+				<div id="list-left">修改资料</div>
+				<div id="list-right">想修改个人信息，在这里!></div>
+			</div>
+			
+			<div id="list">
+				<div id="list-left">地址管理</div>
+				<div id="list-right"><a href="#springUrl('/user/getAllAddress')">地址多？这里管理更方便!></a></div>
+			</div>
+		
+			<div id="list">
+				<div id="list-left">联系客服</div>
+				<div id="list-right"><a href="#springUrl('/user/chat')">有问题，客服小妹在这儿！></a></div>
+			</div>
+		
+			<div id="list">
+				<div id="list-left">关于</div>
+				<div id="list-right">最新版本早知道！></div>
+			</div>
+
+		</div>
+		
+		<div id="footer">
+			<div><a href="#springUrl('')"><img src="#springUrl('/resources/images/zjh/index-footer-1.png')" /><br/>首页</a></div>
+			<div><a href="javascript:void(0)"><img src="#springUrl('/resources/images/zjh/index-footer-2.png')" /><br/>分类</a></div>
+			<div><a href="javascript:void(0)"><img src="#springUrl('/resources/images/zjh/index-footer-3.png')" /><br/>觅Me</a></div>
+			<div><a href="#springUrl('/cart/index')"><img src="#springUrl('/resources/images/zjh/index-footer-4.png')" /><br/>购物车</a></div>
+			<div><a href="#springUrl('/user/index')"><img src="#springUrl('/resources/images/zjh/index-footer-5.png')" /><br/>我的</a></div>
+		</div>
+		
+		<form action="exit" method="get">
+            	<div class="exit">
+                	<button class="orange">退出登录</button>
+            	</div>
+            </form>
+
+	#end
+#end

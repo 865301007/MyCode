@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmu.mall.goodsmgt.wcf.mapper.GoodsMapper">
+
+	<resultMap id="GoodsMapper" type="com.xmu.mall.goodsmgt.wcf.model.Goods">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="serial_code" property="serial_code" jdbcType="VARCHAR" />
+		<result column="weight" property="weight" jdbcType="NUMERIC" />
+		<result column="pre_sal_number" property="pre_sal_number"
+			jdbcType="INTEGER" />
+		<result column="stock_count" property="stock_count" jdbcType="INTEGER" />
+		<result column="store_id" property="store_id" jdbcType="VARCHAR" />
+		<result column="mid_user_price" property="mid_user_price"
+			jdbcType="NUMERIC" />
+		<result column="market_price" property="market_price" jdbcType="NUMERIC" />
+		<result column="real_price" property="real_price" jdbcType="NUMERIC" />
+		<result column="redeem_point" property="redeem_point" jdbcType="INTEGER" />
+		<result column="category_id" property="category_id" jdbcType="INTEGER" />
+		<result column="brand_id" property="brand_id" jdbcType="INTEGER" />
+		<result column="stand_id" property="stand_id" jdbcType="INTEGER" />
+		<result column="add_time" property="add_time" jdbcType="TIMESTAMP" />
+		<result column="last_modified_time" property="last_modified_time" jdbcType="TIMESTAMP" />
+		<result column="description" property="description" jdbcType="CLOB" />
+		<result column="image_path" property="image_path" jdbcType="VARCHAR" />
+		<result column="is_dividable" property="is_dividable" jdbcType="TINYINT" />
+		<result column="default_express" property="default_express" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="getGoodsList" resultMap="GoodsMapper">
+	select * from goods
+	</select>
+	
+	<insert id="addGoods">
+	insert into goods 
+	values(null,
+	#{name,jdbcType=VARCHAR},
+	#{serial_code,jdbcType=VARCHAR},
+	#{weight,jdbcType=NUMERIC},
+	#{pre_sal_number,jdbcType=INTEGER},
+	#{stock_count,jdbcType=INTEGER},
+	#{store_id,jdbcType=VARCHAR},
+	#{mid_user_price,jdbcType=NUMERIC},
+	#{market_price,jdbcType=NUMERIC},
+	#{real_price,jdbcType=NUMERIC},
+	#{redeem_point,jdbcType=INTEGER},
+	#{category_id,jdbcType=INTEGER},
+	#{brand_id,jdbcType=INTEGER},
+	#{stand_id,jdbcType=INTEGER},
+	#{add_time,jdbcType=TIMESTAMP},
+	#{last_modified_time,jdbcType=TIMESTAMP},
+	#{description,jdbcType=CLOB},
+	#{image_path,jdbcType=VARCHAR},
+	#{is_dividable,jdbcType=TINYINT},
+	#{default_express, jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="deleteGoodsById"  parameterType="long">
+	delete from goods where id=#{id}
+	</delete>
+	
+	<select id="getGoodsById" parameterType="long" resultMap="GoodsMapper">
+	select * from goods where id=#{id}
+	</select>
+	
+	
+	<update id="updateGoods">
+	update goods set
+		name=#{name},
+		serial_code=#{serial_code},
+	weight=#{weight},
+	pre_sal_number=#{pre_sal_number},
+	stock_count=#{stock_count},
+	store_id=#{store_id},
+	mid_user_price=#{mid_user_price},
+	market_price=#{market_price},
+	real_price=#{real_price},
+	redeem_point=#{redeem_point},
+	category_id=#{category_id},
+	brand_id=#{brand_id},
+	stand_id=#{stand_id},
+	add_time=#{add_time},
+	last_modified_time=#{last_modified_time},
+	description=#{description},
+	image_path=#{image_path},
+	is_dividable=#{is_dividable},
+	default_express=#{default_express}
+	where id=#{id}
+	</update>
+	
+	<select id="getGoodsByGoodsCode" parameterType="java.lang.String" resultMap="GoodsMapper">
+	select * from goods where serial_code=#{serial_code}
+	</select>
+	
+	<select id="getGoodsByname" parameterType="java.lang.String" resultMap="GoodsMapper">
+	select * from goods where name=#{name}
+	</select>
+	
+	<select id="getGoodsBy"  parameterType="com.xmu.mall.goodsmgt.wcf.service.outter.SelectParameters" resultMap="GoodsMapper" >
+	select * from goods a where (select count(*) from stand b where a.id = b.goods_id and now() &gt; b.on_market_time and now() &lt; b.off_market_time) != 0
+       <if test="brand_id != null">
+         and a.brand_id = #{brand_id}
+       </if>
+       <if test="category_id != null">
+         and a.category_id = #{category_id}
+       </if>  
+       <if test="name != null">
+         and a.name like "%"#{name}"%"
+       </if>
+       <if test="pre_sal_number != null or real_price != null">
+           order by
+           <if test="pre_sal_number != null">
+              <if test="pre_sal_number == 1">
+                  pre_sal_number desc
+              </if>
+              <if test="pre_sal_number == 0">
+                  pre_sal_number asc
+              </if> 
+           </if>
+           <if test="real_price != null">
+              <if test="pre_sal_number != 0">
+              
+              </if>
+              <if test="real_price == 1">
+                  real_price desc
+              </if>
+              <if test="real_price == 0">
+                  real_price asc
+              </if>
+           </if>
+       </if>
+       <!-- 此处有问题 -->
+       limit ${no*size},${size}
+	</select>
+	<update id="deleteGoodsNumById">
+	
+	update goods set stock_count=stock_count-#{num}  where id=#{goodsId}; 
+   
+	</update>
+	<!-- 
+	<select id="getGoodsPrice" resultType="Long" parameterType="Long" resultMap="GoodsMapper">
+	select real_price from goods where id=#{id}
+	
+	</select>
+ -->
+</mapper>

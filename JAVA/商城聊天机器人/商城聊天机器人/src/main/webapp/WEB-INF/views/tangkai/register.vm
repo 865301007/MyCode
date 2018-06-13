@@ -1,0 +1,46 @@
+#tiles_insertTemplate({"template":"../layout/zjh/index_template.vm"})
+	#tiles_putAttribute({"name":"title", "value": "注册界面"})#end
+	#tiles_putAttribute({"name":"body"})
+	<meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<link rel="stylesheet" href="#springUrl('/resources/css/zjh/index.css')">
+	<link href="#springUrl('/resources/css/tangkai/register.css')" type="text/css" rel="stylesheet">
+    <link href="#springUrl('/resources/css/tangkai/global.css')" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="#springUrl('/resources/js/zjh/index.js')"></script>
+	<script type="text/javascript" src="#springUrl('/resources/js/tangkai/register.js')"></script>
+	
+		<div id="header">
+        	<div id="header-left"></div>
+            <div id="header-middle">商城注册</div>
+            
+            <div id="header-right"></div>
+		</div>
+		<body>
+			<div id="layout">
+				<!--<span>商城用户注册</span>-->
+				<form action="addUser"  method="post">
+					<ul>
+						<p id="err_msg"></p>
+						<li><i class="un"><img src="#springUrl('/resources/images/tangkai/user_name.png')"></i><input class="username" id="mobile_phone" name="mobile_phone" required="required" type="text" placeholder="请输入手机号" /></li>
+						<li><i class="yz"><img src="#springUrl('/resources/images/tangkai/msg.png')"></i><input class="yzm" id="user_name" name="user_name" required="required" type="text" placeholder="请输入用户名" /><input type="hidden" id="send" value="获取验证码" /></li>
+						<li><i class="pw"><img src="#springUrl('/resources/images/tangkai/pwd.png')"></i><input class="pwd" id="psw" name="psw" required="required" type="password" placeholder="请输入密码" /></li>
+						<li><i class="pw2"><img src="#springUrl('/resources/images/tangkai/pwd.png')"></i><input class="pwd2" id="psw2" required="required" type="password" placeholder="请输入确认密码" /></li>
+						<div class="queren"><input class="fx" type="checkbox" checked="checked" /><p>我已阅读并同意《用户协议》</p></div>
+					</ul>
+					<div class="reg_btn">
+						<button class="submit" onclick="return inputIsOk();" type="submit">注册</button>
+						<a href="#springUrl('/user/login')"><div class="reg-login"><p>已有帐号，立即登陆</p></div></a>
+					</div>
+				</form>
+				<div align="center">
+ 					<label style="font-size:30px;color:red;" id="result">${result}</label>
+ 				</div>
+			</div>
+		</body>
+
+	#end
+#end

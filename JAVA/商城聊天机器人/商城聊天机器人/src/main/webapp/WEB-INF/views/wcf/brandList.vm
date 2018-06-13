@@ -1,0 +1,50 @@
+#tiles_insertTemplate({"template":"wcf/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "品牌列表"})#end
+#tiles_putAttribute({"name":"header"}) 
+#parse("wcf/header.vm")
+#end 
+#tiles_putAttribute({"name":"body"})
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+
+<table id="mytable" id="mytable" class="bordered striped highlight">
+	<caption>
+	<h3>品牌列表</h3>
+	<a class="waves-effect waves-light btn" href="add">添加</a>
+	</caption>
+	<tbody>
+		<tr>
+			<th scope="col">品牌名称</th>
+			<th scope="col">品牌网址</th>
+			<th scope="col">品牌描述</th>
+			<th scope="col">是否显示</th>
+			<th scope="col">操作</th>
+		</tr>
+		#foreach($brand in ${brandList})
+		</tr>
+		<td>$brand.name
+		</td>
+		<td>$brand.website
+		</td>
+		<td>$brand.description
+		</td>
+		<td>
+		<i class="small material-icons ">done</i>
+		</td>
+		<td>
+		<a href="delete?id=$brand.id">删除</a>|
+		<a href="modify?id=$brand.id">修改</a>
+		</td>
+		</tr>
+		#end
+	</tbody>
+</table>
+#end 
+#tiles_putAttribute({"name":"footer"})
+#parse("wcf/footer.vm") 
+#end 
+#end
+
+
+

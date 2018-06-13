@@ -1,0 +1,113 @@
+#tiles_insertTemplate({"template":"../layout/tangkai/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "订单发货"})#end
+#tiles_putAttribute({"name":"header"}) #parse("../layout/tangkai/header.vm")
+<script type="text/javascript">
+	<!--
+	function getLocalTime(nS) {     
+		return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+		} 
+	function getStatus(value) {     
+		if(parseInt(value) == 0)
+			return "未付款";
+		else if(parseInt(value) == 1)
+			return "已付款";
+		else if(parseInt(value) == 2)
+			return "定制中";
+		else if(parseInt(value) == 3)
+			return "已发货";
+		else if(parseInt(value) == 4)
+			return "已收货";
+		else return "取消";
+		} 
+
+
+	//-->
+	</script>
+#end #tiles_putAttribute({"name":"body"})
+
+<div>
+	<form action="checkedExpressCode">
+		<table class="manage">
+			<lable> <font color="blue">订单基本信息</font></lable>
+			<HR style="border: 6 groove #ff0033" align=center width="100%" SIZE=4>
+			<lable>订单号:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$order.getOrder_sn()</lable>
+			</br>
+			</br>
+			<lable>下单时间:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<script
+				type="text/javascript">document.write(getLocalTime($order.getAdd_time()));</script></lable>
+			</br>
+			</br>
+			<lable>订单状态:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<script
+				type="text/javascript">document.write(getStatus($order.getOrder_status()));</script></lable>
+			</br>
+			</br>
+			<lable>订单备注:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$order.getRemark()</lable>
+			</br>
+			</br>
+			</br> #if($order.getIsUrgency()=="Y")
+			<lable>是否加急:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp是</lable>
+			</br>
+			</br> #else
+			<lable>是否加急:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp否</lable>
+			</br>
+			</br> #end
+
+			<lable> <font color="blue">收货人信息</font></lable>
+			<HR style="border: 6 groove #ff0033" align=center width="100%" SIZE=4>
+			<lable>收货人姓名:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$order.getConsignee()</lable>
+			</br>
+			</br>
+			<lable>收货人地址:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$order.getAddress()</lable>
+			</br>
+			</br>
+			<lable>收货人电话:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$order.getTelephone()</lable>
+			</br>
+			</br>
+
+			<lable> <font color="blue">下单人信息</font></lable>
+			<HR style="border: 6 groove #ff0033" align=center width="100%" SIZE=4>
+			<lable>账号:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$user.getUser_id()</lable>
+			</br>
+			</br>
+			<lable>姓名 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$user.getUser_name()</lable>
+			</br>
+			</br>
+			<lable>电话 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$user.getMobile_phone()</lable>
+			</br>
+			</br>
+
+			<lable> <font color="blue">商品信息</font></lable>
+			<HR style="border: 3 dotted #ff0033" width="100%" SIZE=4>
+
+			<tr>
+				<td colspan="2">
+					<table class="goods_table">
+						<tr>
+							<td>商品ID</td>
+							<td>商品名称</td>
+							<td>数量</td>
+							<td>单价</td>
+						</tr>
+						#foreach($goods in $goodsList)
+						<tr>
+							<td>$goods.getId()</td>
+							<td>$goods.getName()</td>
+							<td>$goods.getNum()</td>
+							<td>$goods.getPrice()</td>
+						</tr>
+						#end
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="goods_total">总价 : $order.getOrder_price() 元</td>
+			</tr>
+		</table>
+			<input type="hidden" name="order_id" value="$order.getOrder_id()" />
+			<lable>请输入快递号:</lable><input type="text" required="required" placeholder="请输入快递号" name="expressCode"/></br>
+			<input type="submit" class="button" value="发货"></input>
+	</form>
+</div>
+#end #tiles_putAttribute({"name":"footer"})
+#parse("../layout/tangkai/footer.vm") #end #end

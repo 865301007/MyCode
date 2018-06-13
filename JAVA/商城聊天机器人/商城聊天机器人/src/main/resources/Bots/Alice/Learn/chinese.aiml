@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<aiml>
+  <category>
+    <pattern>做随机测试</pattern>
+    <template>
+      <random>
+        <li>这是第一个随机测试。</li>
+        <li>这是第二个随机测试。</li>
+        <li>这是第三个随机测试。</li>
+      </random>
+    </template>
+  </category>
+</aiml>

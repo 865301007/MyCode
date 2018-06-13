@@ -1,0 +1,177 @@
+#tiles_insertTemplate({"template":"../layout/zjh/cart_template.vm"})
+	
+	#tiles_putAttribute({"name":"title", "value": "客服台"})#end
+	#tiles_putAttribute({"name":"header"}) 
+		<meta charset="utf-8" />
+		<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+		<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+		<meta HTTP-EQUIV="expires" CONTENT="0">
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" media="screen" />
+
+		
+	#end
+	#tiles_putAttribute({"name":"body"})
+		<link type="text/css" href="#springUrl('/resources/css/tangkai/chat.css')" rel="stylesheet"></script>
+		<script type="text/javascript" src="#springUrl('/resources/js/tangkai/jquery-1.11.1.min.js')"></script>
+		<div id="header">
+			<div id="header-left">
+				<img src="#springUrl('/resources/images/zjh/returnPointer.png')" onclick="window.history.back();">
+			</div>
+			<div id="header-middle">客服</div>
+			<div id="header-right"></div>
+		</div>
+		<div class="speak_window">
+			<div class="speak_box">
+				<div class="answer">
+					<div class="heard_img left"><img src="#springUrl('/resources/images/tangkai/dglvyou.jpg')"></div>
+					<div class="answer_text">
+						<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.<br>不支持IE8及以下浏览器。<br>来源：<a href="http://www.sucaihuo.com/" target="_blank">素材火</a></p>
+						<i></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="saying">
+			<img src="#springUrl('/resources/images/tangkai/saying.gif')">
+		</div>
+		<div class="wenwen-footer">
+			<div class="wenwen_btn left" onClick="to_write()"><img src="#springUrl('/resources/images/tangkai/jp_btn.png')"></div>
+			<div class="wenwen_text left">
+				<div class="write_box">
+					<input type="text" class="left" onKeyUp="keyup()" placeholder="请输入关键字" />
+				</div>   
+				<div class="circle-button" id="wenwen">
+					按住 说话
+				</div>
+			</div>
+			<div class="wenwen_help right">
+				<a href="http://sc.chinaz.com/jiaoben/">
+					<img src="#springUrl('/resources/images/tangkai/help_btn.png')">
+				</a>
+				<button onClick="up_say()" class="right">发送</button>
+			</div>
+			<div style="opacity:0;" class="clear"></div>
+		</div>
+<script type="text/javascript">
+	function to_write(){
+	    $('.wenwen_btn img').attr('src','#springUrl('/resources/images/tangkai/yy_btn.png')');
+	    $('.wenwen_btn').attr('onclick','to_say()');
+	    $('.write_box,.wenwen_help button').show();
+	    $('.circle-button,.wenwen_help a').hide();
+	    $('.write_box input').focus();
+	    for_bottom();
+	}
+
+	function to_say(){
+		$('.write_list').remove();
+	    $('.wenwen_btn img').attr('src','#springUrl('/resources/images/tangkai/jp_btn.png')');
+	    $('.wenwen_btn').attr('onclick','to_write()');
+	    $('.write_box,.wenwen_help button').hide();
+	    $('.circle-button,.wenwen_help a').show();
+	}
+
+	function up_say(){
+		$('.write_list').remove();
+	    var text = $('.write_box input').val(),
+	        str  = '<div class="question">';
+	        str += '<div class="heard_img right"><img src="#springUrl('/resources/images/tangkai/dglvyou.jpg')"></div>';
+	        str += '<div class="question_text clear"><p>'+text+'</p><i></i>';
+	        str += '</div></div>';
+
+	    if(text == ''){
+	        alert('请输入提问！');
+	        $('.write_box input').focus();
+	    }else{
+	        $('.speak_box').append(str);
+	        $('.write_box input').val('');
+	        $('.write_box input').focus();
+	        autoWidth();
+	        for_bottom();
+	        setTimeout(function(){
+	            var ans  = '<div class="answer"><div class="heard_img left"><img src="#springUrl('/resources/images/tangkai/dglvyou.jpg')"></div>';
+	            	ans += '<div class="answer_text"><p>'+chatResponse(text)+'</p><i></i>';
+	        		ans += '</div></div>';
+	        	$('.speak_box').append(ans);
+				for_bottom();
+	        },1000);
+	    }
+	}
+
+	function keyup(){
+		var footer_height = $('.wenwen-footer').outerHeight(),
+			text = $('.write_box input').val(),
+			str = '<div class="write_list">'+text+'</div>';
+		if (text == '' || text == undefined){
+			$('.write_list').remove();
+		}else{
+			$('.wenwen-footer').append(str);
+			$('.write_list').css('bottom',footer_height);
+		}
+	}
+
+	var wen  = document.getElementById('wenwen');
+	function _touch_start(event){
+        event.preventDefault();
+        $('.wenwen_text').css('background','#c1c1c1');
+        $('.wenwen_text span').css('color','#fff');
+        $('.saying').show();
+    }
+
+    function _touch_end(event){
+        event.preventDefault();
+        $('.wenwen_text').css('background','#fff');
+        $('.wenwen_text .circle-button').css('color','#666');    
+        $('.saying').hide();
+        var str  = '<div class="question">';
+	        str += '<div class="heard_img right"><img src="#springUrl('/resources/images/tangkai/dglvyou.jpg')"></div>';
+	        str += '<div class="question_text clear"><p>不好意思，我听不清！</p><i></i>';
+	        str += '</div></div>';
+		$('.speak_box').append(str);
+		for_bottom();
+        setTimeout(function(){
+        	var ans  = '<div class="answer"><div class="heard_img left"><img src="#springUrl('/resources/images/tangkai/dglvyou.jpg')"></div>';
+	        	ans += '<div class="answer_text"><p>我不知道你在说什么?</p><i></i>';
+	    		ans += '</div></div>';
+	    	$('.speak_box').append(ans);
+			for_bottom();
+        },1000);       
+    }
+
+    wen.addEventListener("touchstart", _touch_start, false);
+    wen.addEventListener("touchend", _touch_end, false);
+    
+    function for_bottom(){
+		var speak_height = $('.speak_box').height();
+		$('.speak_box,.speak_window').animate({scrollTop:speak_height},500);
+	}
+	
+	function autoWidth(){
+		$('.question_text').css('max-width',$('.question').width()-60);
+	}
+	
+	function chatResponse(request){
+		var springUrl=$("#hiddenSpringUrl").val();
+		var response = "客服机器人开了个小差";
+		$.ajax({
+			url: springUrl+"/user/response",
+			async: false,
+			cache: false,
+			type: 'post',
+			dataType: "json",
+			contentType:"application/json",
+			data:JSON.stringify(request),
+			success: function (data)
+			{
+				response = data.message;
+			},
+		});
+		return response;
+	}
+	autoWidth();
+</script>
+	#end
+#end
+	

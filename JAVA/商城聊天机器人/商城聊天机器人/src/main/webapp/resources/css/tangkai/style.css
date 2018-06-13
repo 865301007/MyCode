@@ -1,0 +1,247 @@
+input{
+	border:0;
+	border-bottom:1px solid #AFB5BB;
+	background: #F7F7F7;
+	font-size:.98em;
+	outline:none;
+	padding-left:10px;
+}
+select{
+	width:130px;
+	border:0;
+	border-bottom:1px solid #AFB5BB;
+	background: #F7F7F7;
+	font-size:.97em;
+	outline:none;
+}
+.basic_div{
+	font-family:"Microsoft YaHei",Î¢ÈíÑÅºÚ;
+	background:#F7F7F7;
+}
+.order_table {  
+  
+     border-collapse: collapse;  
+  
+     font-family: Futura, Arial, sans-serif;  
+  
+}  
+  
+.order_table caption {  
+  
+     font-size: larger;  
+  
+     margin: 1em auto;  
+  
+}  
+  
+.order_table th,td {  
+  
+     padding: .65em;  
+  
+}  
+  
+.order_table th {  
+  
+     background: #555 nonerepeat scroll 0 0;  
+  
+   /* border: 1px solid #777; */  
+  
+   color: #fff;  
+  
+}  
+
+  
+tbody tr:nth-child(odd) {  
+  
+     background: #ccc;  
+  
+}  
+  
+th:first-child {  
+  
+     border-radius: 9px 0 0 0;  
+  
+}  
+  
+th:last-child {  
+  
+     border-radius: 0 9px 0 0;  
+  
+}  
+  
+tr:last-child td:first-child {  
+  
+     border-radius: 0 0 0 9px;  
+  
+}  
+  
+tr:last-child td:last-child {  
+  
+     border-radius: 0 0 9px 0;  
+  
+}  
+
+.manage{
+	background: #F7F7F7;
+	width:70%;
+	margin:auto;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-top:5px;
+}
+.manage_left{
+	width:20%;
+}
+.manage_right{
+	width:80%;
+}
+.manage_input{
+	padding:2px;
+	width:100%;
+}
+.manage_title{
+	font-size:18px;
+	color:blue;
+}
+.button{
+	margin-top:20px;
+	margin-left:15%;
+	margin-bottom:60px;
+	width:100px;
+	background: #139480;
+  	color: #FFF;
+  	font-size: 0.5em;
+  	padding: 0.6em 2em;
+  	transition: 0.5s all;
+  	-webkit-transition: 0.5s all;
+  	-moz-transition: 0.5s all;
+  	-o-transition: 0.5s all;
+  	display: inline-block;
+  	text-transform: uppercase;
+  	border: none;
+  	outline: none;
+  	border-radius:5px;
+}
+.button:hover{
+	background: #D96B66;
+}
+.table_button{
+	width:50px;
+	background:#135480;
+  	color: #FFF;
+  	font-size: 0.7em;
+  	padding: 0.5em 2em;
+  	transition: 0.5s all;
+  	-webkit-transition: 0.5s all;
+  	-moz-transition: 0.5s all;
+  	-o-transition: 0.5s all;
+  	display: inline-block;
+  	text-transform: uppercase;
+  	border: none;
+  	outline: none;
+  	border-radius:5px;
+  	text-decoration : none;
+}
+.table_button:hover{
+	background: #D96B66;
+}
+.goods_table{
+	width:100%;
+	text-align:center;
+	border:1px solid #AFB5BB;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.goods_total{
+	text-align:right;
+	padding-right:30px;
+}
+
+.bottom_right_test{
+	position:fixed;
+	right:800px;
+	bottom:50px;
+	width:80px;
+	text-align:center;
+}
+
+.bottom_cur_page{
+	position:fixed;
+	right:650px;
+	bottom:50px;
+	width:50px;
+	text-align:center;
+}
+
+.bottom_right_test_sec{
+	position:fixed;
+	right:500px;
+	bottom:50px;
+	width:80px;
+	text-align:center;
+}
+
+
+.table_button_unable{
+	width:50px;
+	background:#c0c0c0;
+  	color: #FFF;
+  	font-size: 0.7em;
+  	padding: 0.5em 2em;
+  	transition: 0.5s all;
+  	-webkit-transition: 0.5s all;
+  	-moz-transition: 0.5s all;
+  	-o-transition: 0.5s all;
+  	display: inline-block;
+  	text-transform: uppercase;
+  	border: none;
+  	outline: none;
+  	border-radius:5px;
+  	text-decoration : none;
+}
+
+.table_button_input{
+	width:50px;
+	background:#FFF;
+  	color: #000;
+  	font-size: 0.7em;
+  	padding: 0.5em 2em;
+  	transition: 0.5s all;
+  	-webkit-transition: 0.5s all;
+  	-moz-transition: 0.5s all;
+  	-o-transition: 0.5s all;
+  	display: inline-block;
+  	text-transform: uppercase;
+  	border: none;
+  	outline: none;
+  	border-radius:5px;
+  	text-decoration : none;
+  	
+  	position:fixed;
+	left:600px;
+	bottom:50px;
+	text-align:center;
+}
+
+.table_button_jump{
+	width:50px;
+	background:#135480;
+  	color: #FFF;
+  	font-size: 0.7em;
+  	padding: 0.5em 2em;
+  	transition: 0.5s all;
+  	-webkit-transition: 0.5s all;
+  	-moz-transition: 0.5s all;
+  	-o-transition: 0.5s all;
+  	display: inline-block;
+  	text-transform: uppercase;
+  	border: none;
+  	outline: none;
+  	border-radius:5px;
+  	text-decoration : none;
+  	
+  	position:fixed;
+	left:700px;
+	bottom:50px;
+	text-align:center;
+}

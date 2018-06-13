@@ -1,0 +1,23 @@
+#tiles_insertTemplate({"template":"../layout/zjh/cart_template.vm"})
+	#tiles_putAttribute({"name":"title", "value": "注册成功界面"})#end
+	#tiles_putAttribute({"name":"body"})
+	<link rel="stylesheet" href="#springUrl('/resources/css/zjh/index.css')">
+	<link href="#springUrl('/resources/css/tangkai/success.css')" type="text/css" rel="stylesheet">
+		<div class="success">
+            <img src="#springUrl('/resources/images/tangkai/success.png')" />
+            <p style="color:red;">恭喜您注册成功！</p>
+            <div class="s_msg">
+                <div class="s_title">您的用户名：<span class="s_red">${session.getAttribute("user_name")}</span></div>
+            </div>
+        </div>
+		
+		<div id="footer">
+			<div><a href="#springUrl('')"><img src="#springUrl('/resources/images/zjh/index-footer-1.png')" /><br/>首页</a></div>
+			<div><a href="javascript:void(0)"><img src="#springUrl('/resources/images/zjh/index-footer-2.png')" /><br/>分类</a></div>
+			<div><a href="javascript:void(0)"><img src="#springUrl('/resources/images/zjh/index-footer-3.png')" /><br/>觅Me</a></div>
+			<div><a href="#springUrl('/cart/index')"><img src="#springUrl('/resources/images/zjh/index-footer-4.png')" /><br/>购物车</a></div>
+			<div><a href="#springUrl('/user/index')"><img src="#springUrl('/resources/images/zjh/index-footer-5.png')" /><br/>我的</a></div>
+		</div>
+	#end
+#end
+	

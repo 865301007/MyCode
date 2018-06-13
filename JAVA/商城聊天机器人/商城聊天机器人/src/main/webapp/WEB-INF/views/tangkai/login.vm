@@ -1,0 +1,66 @@
+#tiles_insertTemplate({"template":"../layout/zjh/index_template.vm"})
+	#tiles_putAttribute({"name":"title", "value": "登录界面"})#end
+	#tiles_putAttribute({"name":"body"})
+	<link rel="stylesheet" href="#springUrl('/resources/css/zjh/index.css')">
+	<link rel="stylesheet" href="#springUrl('/resources/css/tangkai/loginStyle.css')">
+	<link rel="stylesheet" href="#springUrl('/resources/css/tangkai/commonStyle.css')">
+	<script type="text/javascript" src="#springUrl('/resources/js/zjh/index.js')"></script>
+	<script>
+		
+		function hideShowPsw(){
+			var demoImg = document.getElementById("demo_img");
+			var demoInput = document.getElementById("psw");
+			if(demoInput.type == "password"){
+				demoInput.type = "text";
+				demoImg.src = "#springUrl('/resources/images/tangkai/visible.png')";
+			}else{
+				demoInput.type = "password";
+				demoImg.src = "#springUrl('/resources/images/tangkai/invisible.png')";
+			}
+		}
+		
+		function login(){
+			var username = document.getElementById("username");
+			var password = document.getElementById("psw");
+			var result = document.getElementById("result");
+			if(username.value == ""){
+				result.innerText = "手机号/邮箱/用户名不能为空！";
+				return false;
+			}else if(password.value == ""){
+				result.innerText = "密码不能为空！";
+				return false;
+			}else{
+				return true;
+			}
+		}
+	</script>
+		<div id="header">
+        	<div id="header-left">
+        		<img src="#springUrl('/resources/images/zjh/returnPointer.png')" onclick="window.history.back();">
+        	</div>
+            <div id="header-middle">登录界面</div>
+            
+            <div id="header-right"></div>
+		</div>
+		<div id="body-content">
+			<div id="mallpic">
+				<img src="#springUrl('/resources/images/tangkai/user.png')" />
+			</div>
+			<form  action="loginCheck" method="get">
+			<div id="page_container">
+ 				<div class="input_block">
+ 					<input type="search" id="username" name="username" required="required" placeholder="手机号/邮箱/用户名" value="${username}">
+ 					<img id="demo_img" onclick="hideShowPsw()" src="#springUrl('/resources/images/tangkai/invisible.png')">
+ 					<input type="password" required="required" name="psw" id="psw" placeholder="请输入密码"/>
+ 				</div>
+ 					<button onclick="return login();">登录</button><br>
+ 					<a href="#springUrl('/user/register')">我要注册|忘记密码</a>
+ 			</div>
+        	</form>
+		</div>
+		<div id="show" align="center">
+ 			<label id="result">${result}</label>
+ 		</div>
+
+	#end
+#end

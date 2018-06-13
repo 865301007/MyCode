@@ -1,0 +1,73 @@
+/*选择地址*/
+
+.item-choose {
+	width: auto;
+	height: 35px;
+	margin-bottom: 15px;
+	margin-left: 30px;
+	margin-right: 30px
+}
+
+.item-choose-btn {
+	width: 100%;
+	box-shadow: none;
+	border-radius: 5px;
+}
+
+.box {
+	justify-content: flex-start;
+}
+
+.right-arrow-container {
+	padding: 0 0 0 5px;
+}
+
+.personal_address {
+	margin-left: 15px;
+}
+
+.address_choosed label{
+	color: red;
+}
+
+/*新建地址*/
+
+.info-list {
+	border-bottom: solid 1px;
+    border-bottom-color: #eeeeee;
+}
+
+.input-block {
+	display: flex;
+	justify-content: flex-start;
+	height: 40px;
+    align-items: center;
+    margin-left:15px;
+    margin-right:15px;
+}
+
+.input-block label {
+	flex-grow: 0;
+}
+
+.input-text {
+	border: none;
+	outline: none;
+	flex-grow: 1;
+}
+
+.textarea-block {
+	justify-content: flex-start;
+	flex-direction: column;
+	align-items: flex-start;
+	height: auto;
+	margin-bottom:5px;
+}
+
+.input-textarea {
+	width: 100%;
+	flex-shrink: 0;
+	flex-grow: 1;
+    overflow-y: visible;
+    outline: none;
+}

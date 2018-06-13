@@ -1,0 +1,45 @@
+#tiles_insertTemplate({"template":"wcf/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "品类列表"})#end
+#tiles_putAttribute({"name":"header"}) 
+#parse("wcf/header.vm")
+#end 
+#tiles_putAttribute({"name":"body"})
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+
+<table id="mytable" id="mytable" class="bordered striped highlight">
+	<caption>
+	<h3>品类列表</h3>
+	<a class="waves-effect waves-light btn" href="add" class="bordered striped highlight">添加</a>
+	</caption>
+	<tbody>
+		<tr>
+			<th scope="col">品类名称</th>
+			<th scope="col">商品数量</th>
+			<th scope="col">是否显示</th>
+			<th scope="col">操作</th>
+		</tr>
+		#foreach($Category in ${CategoryList})
+		</tr>
+		<td>$Category.name
+		</td>
+		<td>0
+		</td>
+		<td>
+		<i class="small material-icons ">done</i>
+		</td>
+		<td>
+		<a href="delete?id=$Category.id">删除</a>|
+		<a href="modify?id=$Category.id">修改</a>
+		</td>
+		</tr>
+		#end
+	</tbody>
+</table>
+#end 
+#tiles_putAttribute({"name":"footer"})
+#parse("wcf/footer.vm") 
+#end 
+#end
+

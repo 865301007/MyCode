@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>订单查看</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="#springUrl('/resources/css/tangkai/material.min.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/tangkai/commonStyle.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/tangkai/balanceStyle.css')">
+    <script type="text/javascript" src="#springUrl('/resources/js/tangkai/material.min.js')"></script>
+    <script type="text/javascript" src="#springUrl('/resources/js/tangkai/myCart.js')"></script>
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <nav class="my-back">
+                    <a class="mdl-navigation__link" href="#" onClick="javascript :history.back(-1);">
+                    <img class="back-arrow" src="#springUrl('/resources/images/tangkai/ic_arrow_back.png')"/>
+                    </a>
+                </nav>
+                <span class="mdl-layout-title">订单查看</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+				#foreach($goodslist in $orderGoodsList)
+                <ul class="mdl-list cart-list">
+					<form action="lookupOrder" method="get">
+					<input type="hidden" name="order_id" value="${goodslist.getOrder_id()}"></input>
+					#foreach( $goods in $goodslist.getGoodslist())
+                    	<li class="mdl-list__item mdl-list__item--three-line">
+                        	<span class="item_img">
+                        	    <img src="#springUrl('/resources/images/tangkai/default.jpg')" class="item_img"></image>
+                       	 	</span>
+                       	 	<span class="mdl-list__item-primary-content item-second">
+                        	<span class="item_text">商品名字：${goods.getName()}</span>
+                          	  	<span class="item_text mdl-list__item-text-body mylist-auto-height">
+                            		  商品描述：${goods.getDescription()}
+                          	  	</span>
+                        	<span class=" item_text mdl-list__item-text-body mylist-auto-height">
+                            	<span class="item-price">商品价格：￥${goods.getPrice()}</span><span class="item-price">数量：${goods.getNum()}</span>  
+                        	</span>                     
+                    	</li>               		
+                	#end
+                    	
+						<div style="text-align:right; width:auto; height:25px;"><input type="submit" value="查看" /></div>
+						<li class="line-spacer"></li>  
+					</form>
+                </ul>						
+				#end
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

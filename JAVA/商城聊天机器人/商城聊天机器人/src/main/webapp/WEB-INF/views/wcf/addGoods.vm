@@ -1,0 +1,109 @@
+ #tiles_insertTemplate({"template":"wcf/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "添加商品"})#end
+#tiles_putAttribute({"name":"header"}) #parse("wcf/header.vm") #end
+#tiles_putAttribute({"name":"body"})
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+<div class="row" align="center">
+	<form action="added" method="post"  enctype="multipart/form-data" class="col s12">
+		<div class="row">
+			<div class="input-field col s12" align="center">
+				<input name="name" type="text" id="name" class="validate"> <label
+					for="name">商品名称*</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field col s12" align="center">
+				<input name="serial_code" type="text" id="serial_code"
+					class="validate"> <label for="serial_code">商品编码*</label>
+			</div>
+		</div>
+
+		<div class="input-field col s12">
+			<select name="category_id" class="browser-default">
+				<option value="" disabled selected>选择商品分类</option>
+				#foreach($category in ${CategoryList})
+				<option value="$category.id">$category.name</option> #end
+			</select>
+		</div>
+		<div class="input-field col s12">
+			<select name="brand_id" class="browser-default">
+				<option value="" disabled selected>选择商品品牌</option> #foreach($brand
+				in ${brandList})
+				<option value=$brand.id>$brand.name</option> #end
+			</select>
+		</div>
+		<div class="row">
+			<div class="input-field col s12" align="center">
+				<input id="stock_count" type="text" name="stock_count"
+					class="validate"> <label for="stock_count">库存*</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s4">
+				<input id="mid_user_price" type="text" name="mid_user_price"
+					class="validate"> <label for="mid_user_price">中介价格*</label>
+			</div>
+			<div class="input-field col s4">
+				<input id="market_price" type="text" name="market_price"
+					class="validate"> <label for="market_price">市场价格</label>
+			</div>
+			<div class="input-field col s4">
+				<input id="real_price" type="text" name="real_price"
+					class="validate"> <label for="real_price">真实价格</label>
+			</div>
+			<div class="input-field col s4">
+				<input id="description" type="text" name="description"
+					class="validate"> <label for="description">商品描述</label>
+			</div>
+			<div class="input-field col s4">
+				<input id="weight" type="text" name="weight"
+					class="validate"> <label for="weight">商品重量</label>
+			</div>
+			<div class="input-field col s4">
+				<input id="store_id" type="text" name="store_id"
+					class="validate"> <label for="store_id">商店id</label>
+			</div>
+			
+
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				<div class="switch">
+					<label> 是否允许分单？ <input id="is_dividable" type="checkbox"
+						name="is_dividable"> <span class="lever"></span>
+					</label>
+
+				</div>
+			</div>
+			<div class="input-field col s6">
+				<select name="default_express" class="browser-default">
+					<option value="" disabled selected>选择快递</option>
+					<option value="中通快递">中通快递</option>
+					<option value="申通快递">申通快递</option>
+					<option value="圆通快递">圆通快递</option>
+					<option value="韵达快递">韵达快递</option>
+				</select>
+			</div>
+		</div>
+		<div class="row" >
+		
+	<input type="file" name="file" accept="image/*">
+		</div>
+		
+		<button class="btn waves-effect waves-light" type="submit">
+			确定 <i class="material-icons right">send</i>
+		</button>
+		<input class="btn waves-effect waves-light" type="reset" value="重置" />
+	</form>
+</div>
+
+
+#end #tiles_putAttribute({"name":"footer"}) #parse("wcf/footer.vm") #end
+#end
+

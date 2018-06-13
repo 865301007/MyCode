@@ -1,0 +1,32 @@
+#tiles_insertTemplate({"template":"../layout/zjh/index_template.vm"})
+	#tiles_putAttribute({"name":"title", "value": "登录界面"})#end
+	#tiles_putAttribute({"name":"body"})
+	<link rel="stylesheet" href="#springUrl('/resources/css/zjh/index.css')">
+	<link rel="stylesheet" href="#springUrl('/resources/css/tangkai/manager_login.css')">
+	<link rel="stylesheet" href="#springUrl('/resources/css/tangkai/global.css')">
+	<script type="text/javascript" src="#springUrl('/resources/js/zjh/index.js')"></script>
+	<script type="text/javascript" src="#springUrl('/resources/js/tangkai/manager_login.js')"></script>
+	
+        <div class="login">
+            <div class="login-title"><p>商城后台登录系统</p>
+                <div id="show"><label></label></div>
+            </div>
+			</br></br></br>
+            <form method="post" action="check">
+            <div class="login-bar">
+                <ul>
+                    <li><img src="#springUrl('/resources/images/tangkai/login_user.png')"><input type="text" name="manager_id" required="required"  class="text" placeholder="请输入用户名" /></li>
+                    <li><img src="#springUrl('/resources/images/tangkai/login_psw.png')"><input type="password" name="psw" required="required"  class="psd" placeholder="请输入确认密码" /></li>
+                </ul>
+            </div>
+            <div class="login-btn">
+                <button class="submit" type="submit">登陆</button>
+            </div>
+            </form>
+			</br></br></br>
+			<div id="show" align="center">
+				<label id="result">${result}</label>
+			</div>
+        </div>
+	#end
+#end

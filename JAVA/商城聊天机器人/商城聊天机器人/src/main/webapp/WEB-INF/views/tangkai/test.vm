@@ -1,0 +1,10 @@
+#tiles_insertTemplate({"template":"../layout/tangkai/template.vm"})
+#tiles_putAttribute({"name":"title", "value": "订单查看"})#end
+#tiles_putAttribute({"name":"header"}) #parse("../layout/tangkai/header.vm")
+#end #tiles_putAttribute({"name":"body"})
+
+<div>
+<lable>你的购物车为空</lable>
+</div>
+#end #tiles_putAttribute({"name":"footer"})
+#parse("../layout/tangkai/footer.vm") #end #end

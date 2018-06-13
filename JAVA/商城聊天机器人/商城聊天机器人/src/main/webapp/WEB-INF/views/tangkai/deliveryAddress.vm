@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <title>收货地址</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script type="text/javascript" src="#springUrl('/resources/js/tangkai/material.min.js')"></script>
+    <script type="text/javascript" src="#springUrl('/resources/js/tangkai/myCart.js')"></script>
+
+    <link rel="stylesheet" href="#springUrl('/resources/css/tangkai/material.min.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/tangkai/commonStyle.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/tangkai/balanceStyle.css')">
+    <link rel="stylesheet" href="#springUrl('/resources/css/tangkai/addressStyle.css')">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header header-color">
+            <div class="mdl-layout__header-row my_header">
+                <nav class="my-back">
+                    <a class="mdl-navigation__link" href="#" onClick="javascript :history.back(-1);">
+					<img src="#springUrl('/resources/images/tangkai/ic_arrow_back.png')" class="back-arrow"/>
+                    </a>
+                </nav>
+                <!-- Title -->
+                <span class="mdl-layout-title">收货地址</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <ul class="mdl-list cart-list">
+                    <li>
+                    	#if($defaultAddress)
+                    		<form action="getAddress" method="get">
+                        		<input type="hidden" name="user_id" value="${user_id}"></input>      
+                            	<input type="hidden" name="address_id" value="${defaultAddress.address_id}">
+                            	<div class="address_info">
+                                	<button type="submit" class="address_btn">
+                                    	<div class="box">
+                                        	<div class="right-arrow-container">
+                                            	<img class="right-arrow" src="#springUrl('/resources/images/tangkai/ic_arrow_right.png')"></img>
+                                        	</div>
+                                        	<div class="info">
+                                            	<div class="personal_info address_choosed">
+                                                	<label>${defaultAddress.consignee}</label>
+                                                	<label>${defaultAddress.telephone}</label>
+                                            	</div>
+                                            	<div class="personal_address">
+                                                	<p>${defaultAddress.detail}</p>
+                                            	</div>
+                                        	</div>
+                                        
+                                    	</div>
+                                	</button>
+                            	</div>
+                        	</form>
+                    	#else
+                    		<div class="address_info">
+                    			<label>暂时还没有收货地址，请添加！</label>
+                    		</div>
+                    	#end
+                        
+                    </li>
+                    <li>
+                    #foreach($address in $userAddresses)
+                        <form action="getAddress" method="get">
+                        		<input type="hidden" name="address_id" value="${address.address_id}"></input>
+                            	<div class="address_info">
+                                	<button class="address_btn">
+                                    	<div class="box">
+                                        	<div class="info">
+                                            	<div class="personal_info">
+                                                	<label>${address.consignee}</label>
+                                                	<label>${address.telephone}</label>
+                                            	</div>
+                                            	<div class="personal_address">
+                                               		<p>${address.detail}</p>
+                                            	</div>
+                                        	</div>                                       
+                                    	</div>
+                                	</button>
+                           		</div>
+                        	
+                        </form>
+                        #end
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer>
+            <form action="newAddress" method="get">
+            	<input type="hidden" name="user_id" value="${user_id}"></input>
+            	<div class="item-choose">
+                	<button class="item-pay-btn item-choose-btn">+ 新建地址</button>
+            	</div>
+            </form>
+        </footer>
+    </div>
+</body>
+
+</html>
